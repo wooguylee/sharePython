@@ -81,7 +81,7 @@ class tkColControl:
 
     def scaleValueChange(self, idx, value):
         val = int("{}".format(value)) + 64
-        sendData = "@SETPREGAIN:{},5,{};".format(idx, val)
+        sendData = "@SETPREGAIN:5,{},{};".format(idx, val)
         print(sendData)
         self.netsock.sendData("192.168.2.255", sendData)
         
