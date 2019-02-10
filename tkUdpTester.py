@@ -17,17 +17,18 @@ class netClass(Thread):
     def run(self):
         while self.isRun:
             try:
-                data, addr = self.sock.recvfrom(200)
-                
+                data, addr = self.sock.recvfrom(200)                
                 rcvdata = data.decode()
-                self.sock.sendto(rcvdata.encode(), (addr[0], addr[1]))
-                
+                #self.sock.sendto(rcvdata.encode(), (addr[0], addr[1]))                
                 self.evtcallback(rcvdata, addr[0], addr[1])
             
             except socket.timeout:
                 print("Timeout Exception")
         
         self.sock.close()
+        
+    def sendData(self, targetIp, sendData):
+        self.sock.sendto(sendData.encode(), (targetIp, 8989))
         
     def stop(self):
         self.isRun = False
@@ -79,7 +80,8 @@ class tkUdpTester:
     def sendData(self):
         strIp = self.edtIpAddr.get()
         strData = self.edtSendStr.get()
-        self.addLog("[" + strIp + "]" + strData)
+        self.netsock.sendData(strIp, strData)
+        #self.addLog("[" + strIp + "]" + strData)
         
     def clearLog(self):
         self.logList.delete(0, self.logList.size())
