@@ -71,6 +71,9 @@ class tkColControl:
         self.scaleVol6.place(x=10 + (wVal + mwVal) * 5, y=10, width=wVal, height=400)
         self.scaleVol7.place(x=10 + (wVal + mwVal) * 6, y=10, width=wVal, height=400)
         self.scaleVol8.place(x=10 + (wVal + mwVal) * 7, y=10, width=wVal, height=400)
+        
+        self.btExit = Button(self.root, text="Exit", command=self.exitProgram)
+        self.btExit.place(x=700, y=410, width=100, height=70)
 
         self.root.mainloop()
         self.netsock.stop()
@@ -108,6 +111,9 @@ class tkColControl:
 
     def chg8(self, value):
         self.scaleValueChange(8, value)
+        
+    def exitProgram(self):
+        self.root.close()
 
 if __name__ == "__main__":
     main = tkColControl()
