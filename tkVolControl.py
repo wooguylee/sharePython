@@ -113,7 +113,8 @@ class tkColControl:
         self.scaleValueChange(8, value)
         
     def exitProgram(self):
-        self.root.close()
+        self.netsock.stop()
+        self.root.destroy()
 
 if __name__ == "__main__":
     main = tkColControl()
