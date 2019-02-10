@@ -9,6 +9,7 @@ class netClass(Thread):
     def __init__(self, evtcallback, svrport, tmout):
         Thread.__init__(self)
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
         self.sock.bind(('', svrport))
         self.sock.settimeout(tmout)
         self.evtcallback = evtcallback
