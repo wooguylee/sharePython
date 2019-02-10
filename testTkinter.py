@@ -5,7 +5,8 @@ Created on Sun Feb 10 02:57:50 2019
 @author: dlwjddnbest
 """
 
-from tkinter import *
+#from tkinter import *
+from Tkinter import *
 
 def sel():
     selection = "Value = " + str(var.get())
@@ -17,8 +18,8 @@ def chg(value):
     
 
 root = Tk()
-root.geometry('800x480+500+500')
-#root.attributes("-fullscreen", True)
+#root.geometry('800x480+500+500')
+root.attributes("-fullscreen", True)
 var = DoubleVar()
 scale = Scale(root, variable=var, command=chg, from_=6, to=-20)
 scale.place(x=100, y=100, width=100, height=300)
